@@ -1,6 +1,6 @@
 package com.springtutorial.dao;
 
-import com.springtutorial.model.User;
+import com.springtutorial.entity.User;
 
 public interface UserDao extends GenericDao<User, Integer>{
 

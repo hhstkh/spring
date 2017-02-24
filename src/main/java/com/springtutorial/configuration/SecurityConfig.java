@@ -27,9 +27,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity http) throws Exception {
 		http.authorizeRequests()
 			.antMatchers("/resources/**").permitAll()
-			.anyRequest().authenticated()
+			.antMatchers("/checkout/shipping").access("hasRole('USER')")
+			.antMatchers("/admin/**").access("hasRole('ADMIN')")
 			.and().formLogin().loginPage("/login").permitAll()
-			.usernameParameter("ssoId").passwordParameter("password")
+			.usernameParameter("username").passwordParameter("password")
 			.and().csrf()
 			.and().logout().permitAll();
 	}

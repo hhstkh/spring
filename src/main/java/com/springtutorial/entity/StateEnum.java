@@ -1,6 +1,6 @@
-package com.springtutorial.model;
+package com.springtutorial.entity;
 
-public enum State {
+public enum StateEnum {
 	
 	ACTIVE("Active"),
     INACTIVE("Inactive"),
@@ -9,7 +9,7 @@ public enum State {
      
     private String state;
      
-    private State(final String state){
+    private StateEnum(final String state){
         this.state = state;
     }
      

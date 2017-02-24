@@ -1,4 +1,4 @@
-package com.springtutorial.model;
+package com.springtutorial.entity;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -37,11 +37,11 @@ public class User {
 	private String email;
 
 	@Column(name = "STATE", nullable = false)
-	private String state = State.ACTIVE.getState();
+	private String state = StateEnum.ACTIVE.getState();
 
 	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(name = "APP_USER_USER_PROFILE", joinColumns = { @JoinColumn(name = "USER_ID") }, inverseJoinColumns = { @JoinColumn(name = "USER_PROFILE_ID") })
-	private Set<UserProfile> userProfiles = new HashSet<UserProfile>();
+	private Set<UserRole> userProfiles = new HashSet<UserRole>();
 
 	public int getId() {
 		return id;
@@ -99,11 +99,11 @@ public class User {
 		this.state = state;
 	}
 
-	public Set<UserProfile> getUserProfiles() {
+	public Set<UserRole> getUserProfiles() {
 		return userProfiles;
 	}
 
-	public void setUserProfiles(Set<UserProfile> userProfiles) {
+	public void setUserProfiles(Set<UserRole> userProfiles) {
 		this.userProfiles = userProfiles;
 	}
 

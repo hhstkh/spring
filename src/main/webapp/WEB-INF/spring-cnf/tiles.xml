@@ -27,4 +27,15 @@
 		<put-attribute name="title" value="Login"/>
 		<put-attribute name="body" value="/WEB-INF/pages/login.jsp"/>
 	</definition>
+	
+	<!-- Products page -->
+	<definition name="list-product" extends="layout">
+		<put-attribute name="title" value="Products"/>
+		<put-attribute name="body" value="/WEB-INF/pages/list-product.jsp"/>
+	</definition>
+	
+	<definition name="register" extends="layout">
+		<put-attribute name="title" value="Register"/>
+		<put-attribute name="body" value="/WEB-INF/pages/register.jsp"/>
+	</definition>
 </tiles-definitions> 

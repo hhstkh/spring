@@ -7,7 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.springtutorial.model.Employee;
+import com.springtutorial.entity.Employee;
 import com.springtutorial.service.EmployeeService;
 
 @Controller

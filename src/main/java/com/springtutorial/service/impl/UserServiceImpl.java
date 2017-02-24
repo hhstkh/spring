@@ -7,7 +7,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.springtutorial.dao.GenericDao;
 import com.springtutorial.dao.UserDao;
-import com.springtutorial.model.User;
+import com.springtutorial.entity.User;
 import com.springtutorial.service.UserService;
 
 @Service

@@ -1,6 +1,6 @@
-package com.springtutorial.model;
+package com.springtutorial.entity;
 
-public enum UserProfileType {
+public enum RoleTypeEnum {
 	
 	USER("USER"),
     DBA("DBA"),
@@ -8,7 +8,7 @@ public enum UserProfileType {
 	
 	String userProfileType;
 	
-	private UserProfileType(String userProfileType){
+	private RoleTypeEnum(String userProfileType){
         this.userProfileType = userProfileType;
     }
 	

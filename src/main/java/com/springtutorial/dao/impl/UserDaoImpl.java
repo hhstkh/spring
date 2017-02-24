@@ -5,7 +5,7 @@ import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
 import com.springtutorial.dao.UserDao;
-import com.springtutorial.model.User;
+import com.springtutorial.entity.User;
 
 @Repository
 public class UserDaoImpl extends GenericDaoImpl<User, Integer> implements UserDao{

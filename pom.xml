@@ -7,17 +7,6 @@
 	<version>1.0-SNAPSHOT</version>
 	<name>SpringWebApp Maven Webapp</name>
 	<url>http://maven.apache.org</url>
-	<repositories>
-		<repository>
-			<id>central</id>
-			<name>Central Repository</name>
-			<url>http://repo.maven.apache.org/maven2</url>
-			<layout>default</layout>
-			<snapshots>
-				<enabled>false</enabled>
-			</snapshots>
-		</repository>
-	</repositories>
 	<properties>
 		<jdk.version>1.8</jdk.version>
 		<spring.version>4.2.1.RELEASE</spring.version>
@@ -203,7 +192,7 @@
 				</configuration>
 			</plugin>
 
-			<!-- For Maven Tomcat Plugin -->
+			<!-- For Maven Tomcat Plugin  --> 
 			<plugin>
 				<groupId>org.apache.tomcat.maven</groupId>
 				<artifactId>tomcat7-maven-plugin</artifactId>
@@ -212,6 +201,7 @@
 					<path>/SpringWebApp</path>
 				</configuration>
 			</plugin>
+			
 
 		</plugins>
 	</build>

@@ -1,14 +1,13 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
-<%@ page isELIgnored="false"%>
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
+<%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
+<c:set var="currentLocale" value="${pageContext.response.locale}"/>
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
-
-<meta charset="utf-8">
+<meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="">
@@ -40,7 +39,19 @@
 
 	<!-- Page Content -->
 	<div class="container">
-		<tiles:insertAttribute name="body" />
+		<div class="row">
+			<div class="col-md-3">
+				<p class="lead">Shop Name</p>
+				<div class="list-group">
+					<a href="#" class="list-group-item">Category 1</a> <a href="#"
+						class="list-group-item">Category 2</a> <a href="#"
+						class="list-group-item">Category 3</a>
+				</div>
+			</div>
+			<div class="col-md-9">
+				<tiles:insertAttribute name="body" />
+			</div>
+		</div>
 	</div>
 	<!-- /.container -->
 

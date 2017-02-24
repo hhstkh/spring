@@ -1,4 +1,4 @@
-package com.springtutorial.model;
+package com.springtutorial.entity;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
