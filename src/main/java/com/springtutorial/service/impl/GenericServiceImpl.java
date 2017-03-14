@@ -22,7 +22,7 @@ public abstract class GenericServiceImpl<E, K extends Serializable> implements G
 
 	@Override
 	public void save(E entity) {
-		// TODO Auto-generated method stub
+		genericDao.save(entity);
 		
 	}
 
@@ -40,8 +40,7 @@ public abstract class GenericServiceImpl<E, K extends Serializable> implements G
 
 	@Override
 	public E find(K key) {
-		// TODO Auto-generated method stub
-		return null;
+		return genericDao.find(key);
 	}
 
 	@Override

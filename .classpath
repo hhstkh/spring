@@ -29,5 +29,8 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="lib" path="/media/DATA/training/tomcat-server/bin/bootstrap.jar"/>
+	<classpathentry kind="lib" path="/media/DATA/training/tomcat-server/bin/commons-daemon.jar"/>
+	<classpathentry kind="lib" path="/media/DATA/training/tomcat-server/bin/tomcat-juli.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

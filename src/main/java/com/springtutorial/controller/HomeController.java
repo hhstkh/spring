@@ -1,11 +1,12 @@
 package com.springtutorial.controller;
 
-import java.util.Locale;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
@@ -13,49 +14,35 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.ModelAndView;
 
-import com.springtutorial.entity.Customer;
+import com.springtutorial.entity.Category;
+import com.springtutorial.entity.Product;
+import com.springtutorial.service.CategoryService;
+import com.springtutorial.service.ProductService;
 
 @Controller
-public class HomeController {
+public class HomeController extends CommonController {
 	private static int counter = 0;
 	private final static org.slf4j.Logger logger = LoggerFactory.getLogger(HomeController.class);
 	
+	@Autowired
+	private CategoryService categoryService;
+	
+	@Autowired
+	private ProductService productService;
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String welcome(ModelMap model) {
-		model.put("message", "Welcome");
-		model.put("counter", ++counter);
+		List<Product> products = productService.getAll();
 		
-		logger.debug("[welcome] counter : {}", counter);
+		model.put("product", products.get(0));
+		model.put("products", products);
+		
 		return "home";
 	}
 	
-	@RequestMapping(value = "/changeLang")
-	public String changeLanguage(HttpServletRequest request, HttpServletResponse response, @RequestParam(value = "lang") String langCode) {
-		response.setLocale(new Locale(langCode));
-		return "redirect:/?lang=" + langCode;
-	}
-	
-	@RequestMapping(value = "/register", method = RequestMethod.GET)
-	public ModelAndView signUp() {
-		return new ModelAndView("register", "customer", new Customer());
-	}
-	
-	@RequestMapping(value = "/register", method = RequestMethod.POST)
-	public String procesSignUp() {
-		return "register";
-	}
-	
-	@RequestMapping(value = "/login", method = RequestMethod.GET)
+	@RequestMapping("/login")
 	public String login() {
-		return "login";
-	}
-	
-	@RequestMapping(value = "/login", method = RequestMethod.POST)
-	public String processLogin() {
 		return "login";
 	}
 	

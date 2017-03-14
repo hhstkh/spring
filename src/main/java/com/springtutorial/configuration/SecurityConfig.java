@@ -9,7 +9,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.UserDetailsService;
 
-@Configuration
+//@Configuration
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	
@@ -27,10 +27,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity http) throws Exception {
 		http.authorizeRequests()
 			.antMatchers("/resources/**").permitAll()
-			.antMatchers("/checkout/shipping").access("hasRole('USER')")
-			.antMatchers("/admin/**").access("hasRole('ADMIN')")
+			.anyRequest().authenticated()
 			.and().formLogin().loginPage("/login").permitAll()
-			.usernameParameter("username").passwordParameter("password")
+			.usernameParameter("ssoId").passwordParameter("password")
 			.and().csrf()
 			.and().logout().permitAll();
 	}

@@ -10,22 +10,22 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="<c:url value="/?lang=${pageContext.response.locale}"/>" >Home</a>
+                <a class="navbar-brand" href="#" >Home</a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     <li>
-                        <a href="<c:url value="/products?lang=${pageContext.response.locale}"  />" >Products</a>
+                        <a href="<c:url value="/products"  />" >Products</a>
                     </li>
                     <li>
                         <a href="#">Contact</a>
                     </li>
                     <li>
-                    	<a href="<c:url value="/logout?lang=${pageContext.response.locale}"/>" >Logout</a>
+                    	<a href="<c:url value="/logout"/>" >Logout</a>
                     </li>
                     <li>
-                    	<a href="<c:url value="/register"/>"><spring:message code="signup"/></a>
+                    	<a href="<c:url value="/register"/>"></a>
                     </li>
                     <!-- 
                     <li>

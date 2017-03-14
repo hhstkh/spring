@@ -57,8 +57,7 @@ public abstract class GenericDaoImpl<E, K extends Serializable> implements Gener
 
 	@Override
 	public E find(K key) {
-		// TODO Auto-generated method stub
-		return null;
+		return (E) getSession().get(this.clazz, key);
 	}
 
 	@SuppressWarnings("unchecked")
