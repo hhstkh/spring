@@ -28,6 +28,16 @@
 		<put-attribute name="body" value="/WEB-INF/pages/login.jsp"/>
 	</definition>
 	
+	<definition name="category-form" extends="layout">
+		<put-attribute name="title" value="Category Form"/>
+		<put-attribute name="body" value="/WEB-INF/pages/category-form.jsp"/>
+	</definition>
+	
+	<definition name="product-form" extends="layout">
+		<put-attribute name="title" value="Category Form"/>
+		<put-attribute name="body" value="/WEB-INF/pages/product-form.jsp"/>
+	</definition>
+	
 	<!-- Products page -->
 	<definition name="list-product" extends="layout">
 		<put-attribute name="title" value="Products"/>

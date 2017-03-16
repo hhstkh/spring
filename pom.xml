@@ -198,6 +198,13 @@
 			<version>2.5.0</version>
 		</dependency>
 
+		<!-- https://mvnrepository.com/artifact/com.ckeditor/ckeditor-java-core -->
+		<dependency>
+			<groupId>com.ckeditor</groupId>
+			<artifactId>ckeditor-java-core</artifactId>
+			<version>3.5.3</version>
+		</dependency>
+
 
 	</dependencies>
 	<build>

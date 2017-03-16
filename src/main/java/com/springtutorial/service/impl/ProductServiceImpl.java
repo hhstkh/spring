@@ -10,12 +10,12 @@ import com.springtutorial.entity.Product;
 import com.springtutorial.service.ProductService;
 
 @Service
-public class ProductServiceImpl extends GenericServiceImpl<Product, String> implements ProductService {
+public class ProductServiceImpl extends GenericServiceImpl<Product, Integer> implements ProductService {
 	
 	private ProductDao productDao;
 	
 	@Autowired
-	public ProductServiceImpl(@Qualifier("productDaoImpl")GenericDao<Product, String> genericDao) {
+	public ProductServiceImpl(@Qualifier("productDaoImpl")GenericDao<Product, Integer> genericDao) {
 		super(genericDao);
 		this.productDao = (ProductDao) genericDao;
 	}

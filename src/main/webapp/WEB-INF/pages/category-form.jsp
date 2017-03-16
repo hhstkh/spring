@@ -3,14 +3,10 @@
 <c:url var="url" value="/category-form"/>
 
 <sp:form method="post" action="${url}" modelAttribute="category">
-	<table>
-		<tr>
-			<td><label for="p-name">Category Name</label></td>
-			<td><sp:input path="name"/></td>
-		</tr>
-		<tr>
-			<td></td>
-			<td><input type="submit" value="Save"></td>
-		</tr>
-	</table>
+	<div class="form-group">
+		<label for="c-name">Category Name</label>
+		<sp:input path="name" id="c-name" class="form-control"/>
+	</div>
+	<button type="submit" class="btn btn-default">Submit</button>
+	
 </sp:form>

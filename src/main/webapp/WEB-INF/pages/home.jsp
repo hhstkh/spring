@@ -1,186 +1,70 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<div class="content product-info" role="main">
-	<section class="product-main">
-		<header>
-			<h1 class="product-name">${product.productName}</h1>
-			<div class="product-overview">
-				<strong class="price">$23</strong>
-				<ol class="star">
-					<li>*</li>
-					<li>*</li>
-					<li>*</li>
-					<li>*</li>
+
+<div class="col-md-12">
+
+	<div class="row carousel-holder">
+
+		<div class="col-md-12">
+			<div id="carousel-example-generic" class="carousel slide"
+				data-ride="carousel">
+				<ol class="carousel-indicators">
+					<li data-target="#carousel-example-generic" data-slide-to="0"
+						class="active"></li>
+					<li data-target="#carousel-example-generic" data-slide-to="1"></li>
+					<li data-target="#carousel-example-generic" data-slide-to="2"></li>
 				</ol>
-				<a class="review-count" href="#">8 Reviews</a>
-			</div>
-		</header>
-		<div class="product-img">
-			<figure class="img-container">
-				<div id="img-list">
-					<ul>
-						<li><img src="data:image/png;base64,${product.imageBase64}"></li>
-						<li><img src="images/product_img_2.jpg"></li>
-						<li><img src="images/product_img_3.jpg"></li>
-					</ul>
+				<div class="carousel-inner">
+					<div class="item active">
+						<img class="slide-image" src="http://placehold.it/800x300" alt="">
+					</div>
+					<div class="item">
+						<img class="slide-image" src="http://placehold.it/800x300" alt="">
+					</div>
+					<div class="item">
+						<img class="slide-image" src="http://placehold.it/800x300" alt="">
+					</div>
 				</div>
-			</figure>
-			<nav>
-				<ul>
-					<li><img src="images/product_img_1_thumb.jpg"></li>
-					<li><img src="images/product_img_2_thumb.jpg"></li>
-					<li><img src="images/product_img_3_thumb.jpg"></li>
-				</ul>
-			</nav>
-		</div>
-		
-		<c:url var="addProductUrl" value="/checkout/addProduct"/>
-		
-		<form class="product-form" id="add-to-cart" action="${addProductUrl}">
-			<fieldset>
-				<legend>Add to Cart</legend>
-				<div class="field qty-field">
-					<label for="qty">Qty</label> <input name="qty" id="qty"
-						type="number" value="1" min="1" max="999">
-				</div>
-				<div class="field size-field">
-					<label for="size">Size</label> <select>
-						<option value="s">S</option>
-						<option value="m">M</option>
-						<option value="l">L</option>
-						<option value="xl">XL</option>
-					</select>
-				</div>
-				<div class="submit-form">
-					<input type="submit" value="Add to Cart">
-				</div>
-				<input type="hidden" name="product-id" value="${product.productId}">
-				<input type="hidden" name="product-name" value="${product.productName}">
-				<input type="hidden" name="product-price" value="${product.price}">
-			</fieldset>
-		</form>
-		<div class="product-utils">
-			<a href="#">Share</a><a href="#">Find Nearby</a>
-		</div>
-		<div class="product-description">
-			<div>
-				<p>Behold, your new favorite shirt! This built-to-last tee
-					adapts to your size and capabilities, starting off XS then
-					stretches and scales to keep you comfortable as you grow taller and
-					wider. The future is here, so look sharp.</p>
+				<a class="left carousel-control" href="#carousel-example-generic"
+					data-slide="prev"> <span
+					class="glyphicon glyphicon-chevron-left"></span>
+				</a> <a class="right carousel-control" href="#carousel-example-generic"
+					data-slide="next"> <span
+					class="glyphicon glyphicon-chevron-right"></span>
+				</a>
 			</div>
 		</div>
-	</section>
-	<section class="aux related-products">
-		<header>
-			<a href="#">
-				<h2>Similar T-shirts</h2>
-			</a>
-		</header>
-		<div role="tabpanel">
-			<div class="related-list">
-				<ul>
-					<c:forEach items="${products}" var="p">
-						<li>
-							<a href="#">
-								<img src="data:image/png;base64,${p.imageBase64}">
-							</a>
-						</li>
-					</c:forEach>
-					
-				</ul>
+
+	</div>
+
+	<div class="row">
+		<c:forEach items="${products}" var="product">
+			<div class="col-sm-4 col-lg-4 col-md-4">
+				<div class="thumbnail">
+					<img src="data:image/png;base64, ${product.imageBase64}" alt="">
+					<div class="caption">
+						<h4 class="pull-right">${product.price}</h4>
+						<h4>
+							<a href="#">${product.productName}</a>
+						</h4>
+
+					</div>
+					<div class="ratings">
+						<p class="pull-right">15 reviews</p>
+						<p>
+							<span class="glyphicon glyphicon-star"></span> <span
+								class="glyphicon glyphicon-star"></span> <span
+								class="glyphicon glyphicon-star"></span> <span
+								class="glyphicon glyphicon-star"></span> <span
+								class="glyphicon glyphicon-star"></span>
+						</p>
+					</div>
+				</div>
 			</div>
-		</div>
-	</section>
-	<section class="aux reviews">
-		<header>
-			<a href="#">
-				<h2>8 Reviews</h2>
-				<ol class="star">
-					<li>*</li>
-					<li>*</li>
-					<li>*</li>
-					<li>*</li>
-				</ol>
-			</a>
-		</header>
-		<div role="tabpanel">
-			<div>
-				<ol class="reviews-list">
-					<li><img src="images/avatar.png">
-						<div class="review-meta">
-							<ol class="star">
-								<li>*</li>
-								<li>*</li>
-								<li>*</li>
-								<li>*</li>
-							</ol>
-							<h3>Awesome shirt!</h3>
-							<a href="#"><time datetime="2010-01-20">11/12/2011</time> By
-								Nick McKinsey</a>
-						</div>
-						<div class="review-content">
-							<p>This shirt looks awesome and is really comfortable to
-								wear. It did shrink quite a lot when washed, but that could have
-								just been how I ran it. All in all, it's my favourite shirt, and
-								I love wearing it.</p>
-						</div></li>
-					<li><img src="images/avatar.png">
-						<div class="review-meta">
-							<ol class="star">
-								<li>*</li>
-								<li>*</li>
-								<li>*</li>
-								<li>*</li>
-							</ol>
-							<h3>Awesome shirt!</h3>
-							<a href="#"><time datetime="2010-01-20">11/12/2011</time> By
-								Nick McKinsey</a>
-						</div>
-						<div class="review-content">
-							<p>This shirt looks awesome and is really comfortable to
-								wear. It did shrink quite a lot when washed, but that could have
-								just been how I ran it. All in all, it's my favourite shirt, and
-								I love wearing it.</p>
-						</div></li>
-					<li><img src="images/avatar.png">
-						<div class="review-meta">
-							<ol class="star">
-								<li>*</li>
-								<li>*</li>
-								<li>*</li>
-								<li>*</li>
-							</ol>
-							<h3>Awesome shirt!</h3>
-							<a href="#"><time datetime="2010-01-20">11/12/2011</time> By
-								Nick McKinsey</a>
-						</div>
-						<div class="review-content">
-							<p>This shirt looks awesome and is really comfortable to
-								wear. It did shrink quite a lot when washed, but that could have
-								just been how I ran it. All in all, it's my favourite shirt, and
-								I love wearing it.</p>
-						</div></li>
-					<li><img src="images/avatar.png">
-						<div class="review-meta">
-							<ol class="star">
-								<li>*</li>
-								<li>*</li>
-								<li>*</li>
-								<li>*</li>
-							</ol>
-							<h3>Awesome shirt!</h3>
-							<a href="#"><time datetime="2010-01-20">11/12/2011</time> By
-								Nick McKinsey</a>
-						</div>
-						<div class="review-content">
-							<p>This shirt looks awesome and is really comfortable to
-								wear. It did shrink quite a lot when washed, but that could have
-								just been how I ran it. All in all, it's my favourite shirt, and
-								I love wearing it.</p>
-						</div></li>
-				</ol>
-				<a href="#">Read All Reviews</a>
-			</div>
-		</div>
-	</section>
+
+		</c:forEach>
+
+	</div>
+
 </div>
+
+

@@ -7,12 +7,9 @@ public class CartItem {
 	private String productName;
 	private int quantity;
 	private BigDecimal productPrice;
+	private String productImageBase64;
 	
-	public CartItem(int id, String name, int qty, BigDecimal price) {
-		this.productId = id;
-		this.productName = name;
-		this.quantity = qty;
-		this.productPrice = price;
+	public CartItem() {
 	}
 	
 	
@@ -43,4 +40,15 @@ public class CartItem {
 	public BigDecimal getTotalPrice() {
 		return productPrice.multiply(new BigDecimal(quantity));
 	}
+
+
+	public String getProductImageBase64() {
+		return productImageBase64;
+	}
+
+
+	public void setProductImageBase64(String productImageBase64) {
+		this.productImageBase64 = productImageBase64;
+	}
+	
 }

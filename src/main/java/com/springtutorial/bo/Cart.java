@@ -4,6 +4,8 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.springtutorial.entity.Product;
+
 public class Cart {
 	
 	private String cartId;
@@ -25,7 +27,12 @@ public class Cart {
 	}
 	
 	public int getNumberOfItems() {
-		return this.cartItems.size();
+		int total = 0;
+		for (CartItem cartItem : this.cartItems) {
+			total += cartItem.getQuantity();
+		}
+		
+		return total;
 	}
 	
 	public List<CartItem> getCartItems() {
@@ -34,17 +41,17 @@ public class Cart {
 	public void setCartItems(List<CartItem> cartItems) {
 		this.cartItems = cartItems;
 	}
-	public void addCartItem(int id, String itemName, int qty, BigDecimal price) {
+	public void addCartItem(int buyingQty, Product product) {
 		boolean existItem = false;
 		for (CartItem cartItem : cartItems) {
-			if (cartItem.getProductName().equals(itemName)) {
-				cartItem.setQuantity(qty);
+			if (cartItem.getProductId() == product.getProductId()) {
+				cartItem.setQuantity(buyingQty);
 				existItem = true;
 			}
 		}
 		
 		if (!existItem) {
-			CartItem item = new CartItem(id, itemName, qty, price);
+			CartItem item = new CartItem();
 			this.cartItems.add(item);
 		}
 		

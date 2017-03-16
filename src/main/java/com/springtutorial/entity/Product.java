@@ -30,7 +30,7 @@ public class Product implements Serializable {
 	private static final long serialVersionUID = 2921127431540375777L;
 	
 	@Id
-    @Column(name = "product_id", nullable = false)
+    @Column(name = "id", nullable = false)
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int productId;
 	

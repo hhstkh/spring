@@ -22,7 +22,7 @@ public class Order implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-    @Column(name = "order_id", length = 50)
+    @Column(name = "id", length = 50)
 	private String id;
 	
 	@Column(name = "order_date", nullable = false)

@@ -34,8 +34,6 @@ public class HomeController extends CommonController {
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String welcome(ModelMap model) {
 		List<Product> products = productService.getAll();
-		
-		model.put("product", products.get(0));
 		model.put("products", products);
 		
 		return "home";
