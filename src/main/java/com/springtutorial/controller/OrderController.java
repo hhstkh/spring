@@ -33,11 +33,11 @@ public class OrderController {
 	@RequestMapping(value = "/addProduct", method = RequestMethod.POST)
 	@ResponseBody
 	public Cart addProduct(@RequestParam(value = "productId") int productId, 
-			@RequestParam(value = "qty") int buyingQty,
+			@RequestParam(value = "buyQty") int buyQty,
 			HttpServletRequest request, HttpServletResponse response) {
 		Cart cart = CartUtil.getCartInSession(request);
 		Product product = productService.find(productId);
-		cart.addCartItem(buyingQty, product);
+		cart.addCartItem(buyQty, product);
 		
 		return cart;
 	}

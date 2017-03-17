@@ -27,6 +27,15 @@
                     <li>
                     	<a href="<c:url value="/register"/>"></a>
                     </li>
+                    <li>
+                    	<a class="glyphicon glyphicon-shopping-cart" href="<c:url value="/checkout/cart"/>">
+                    		<span id="cart-count">
+                    			<c:if test="${cart.numberOfItems gt 0}">
+                    				${cart.numberOfItems}
+                    			</c:if>
+                    		</span>
+                    	</a>
+                    </li>
                     <!-- 
                     <li>
                     	<a href="<c:url value="/changeLang?lang=en"/> ">English</a>

@@ -4,6 +4,7 @@
 <c:url var="url" value="/product-form"/>
 <c:url var="ckeditorPath" value="/resources/3rdParty/ckeditor"/>
 <sp:form method="post" action="${url}"  modelAttribute="product" enctype="multipart/form-data">
+	<sp:input type="hidden" path="productId"/>
 	<div class="form-group">
 		<label for="p-name">Product Name</label>
 		<sp:input type="text" id="p-name" class="form-control" path="productName"/>

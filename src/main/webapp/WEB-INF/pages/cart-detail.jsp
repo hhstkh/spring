@@ -6,23 +6,24 @@
 
 	<div class="row">
 		<div class="col-lg-8">
-			<div class="row title"></div>
-			<form id="cart">
-				<c:forEach items="${cart.cartItems}" var="cartItem">
-					<div class="row">
-						<div class="col-lg-3"></div>
-						<div class="col-right">
-							<div class="col-lg-8">${cartItem.productName}</div>
-							<div class="col-lg-2">10</div>
-							<div>
-								<output class="item-total" name="item-total">${cartItem.totalPrice}</output>
-							</div>
-						</div>
+			<div class="row title">2 sp</div>
+			<c:forEach items="${cart.cartItems}" var="cartItem">
+				<div class="row">
+					<div class="col-lg-3">
+						<img src="data:image/png;base64, ${cartItem.productImageBase64}"/>
 					</div>
-				</c:forEach>
-			</form>
+					<div class="col-right">
+						<div class="col-lg-8">${cartItem.productName}</div>
+						<div class="col-lg-2">${cartItem.productPrice}</div>
+						<div class="col-lg-1">${cartItem.quantity}</div>
+					</div>
+				</div>
+			</c:forEach>
 		</div>
-		<div class="col-lg-4"></div>
+		<div class="col-lg-4">
+			<p>Total ${cart.grandTotal}</p>
+			<a href="<c:url value="/checkout/shipping"/> ">Payment</a>
+		</div>
 	</div>
 
 

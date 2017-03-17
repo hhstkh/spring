@@ -12,6 +12,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.commons.CommonsMultipartFile;
@@ -50,6 +51,22 @@ public class ProductController {
 		return "product-form";
 	}
 	
+	@RequestMapping(value="/product/edit/{productId}")
+	public String editProduct(@PathVariable int productId, ModelMap model) {
+		
+		Product p = productService.find(productId);
+		model.addAttribute("product", p);
+		
+		return "product-form";
+	}
+	
+	@RequestMapping(value="/product/delete/{productId}")
+	public void deleteProduct(@PathVariable int productId, ModelMap model) {
+		
+		Product p = productService.find(productId);
+		productService.delete(p);
+	}
+	
 	@RequestMapping(value = "/product-form", method = RequestMethod.POST)
 	public String saveProduct(@Valid @ModelAttribute("product") Product product, BindingResult result) {
 		if (result.hasErrors()) {
@@ -64,6 +81,15 @@ public class ProductController {
 		productService.save(product);
 		
 		return "redirect:/product-form";
+	}
+	
+	@RequestMapping(value="/product/{productId}")
+	public String viewProduct(@PathVariable int productId, ModelMap model) {
+		
+		Product p = productService.find(productId);
+		model.addAttribute("product", p);
+		
+		return "product-detail";
 	}
 
 }

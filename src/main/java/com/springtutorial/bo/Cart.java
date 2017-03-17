@@ -52,6 +52,10 @@ public class Cart {
 		
 		if (!existItem) {
 			CartItem item = new CartItem();
+			item.setProductId(product.getProductId());
+			item.setProductName(product.getProductName());
+			item.setProductPrice(product.getPrice());
+			item.setProductImageBase64(product.getImageBase64());
 			this.cartItems.add(item);
 		}
 		

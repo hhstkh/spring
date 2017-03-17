@@ -20,16 +20,12 @@ $(document).ready(function($) {
 		var data = {};
 		var $form = $(this),
 			url = $form.attr("action"),
-			$qty = $form.find("input[name='qty']"),
-			$productId = $form.find("input[name='product-id']"),
-			$productName = $form.find("input[name='product-name']"),
-			$productPrice = $form.find("input[name='product-price']");
+			$qty = $form.find("input[name='buyQty']"),
+			$productId = $form.find("input[name='product-id']");
+			
 		
-		data["qty"] = parseInt($qty.val());
+		data["buyQty"] = parseInt($qty.val());
 		data["productId"] = parseInt($productId.val());
-		data["productName"] = $productName.val();
-		data["productPrice"] = $productPrice.val();
-		
 	
 		$.ajax({
 			type : "POST",
@@ -37,14 +33,13 @@ $(document).ready(function($) {
 			dataType: "json",
 			data: { 
 				productId: data["productId"], 
-				qty: data["qty"],
-				productName: data["productName"],
-				productPrice: data["productPrice"]
+				buyQty: data["buyQty"],
 			},
 			success : function(result) {
-				var $cartNumber = $("#cart-number");
-				var qty = parseInt($cartNumber.html());
-				$cartNumber.html(qty + data["qty"]);
+				var $cartCount = $("#cart-count");
+				var cartCount = $cartCount.html() || 0;
+				var qty = parseInt(cartCount);
+				$cartCount.html(qty + data["buyQty"]);
 			},
 			error : function(e) {
 				console.log("ERROR: ", e);
@@ -55,7 +50,7 @@ $(document).ready(function($) {
 
 	});
 	
-	var cart = new Cart();
+	/*var cart = new Cart();
 
     $("#cart input[type='number']").on("input", function() {
         var $changingQty = $(this),
@@ -81,5 +76,5 @@ $(document).ready(function($) {
         
         $grantTotal.html(cart.grantTotal);
 
-    })
+    })*/
 });

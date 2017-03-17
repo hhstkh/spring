@@ -40,7 +40,9 @@
 		<c:forEach items="${products}" var="product">
 			<div class="col-sm-4 col-lg-4 col-md-4">
 				<div class="thumbnail">
-					<img src="data:image/png;base64, ${product.imageBase64}" alt="">
+					<a href="<c:url value="/product/${product.productId}"/> " >
+						<img src="data:image/png;base64, ${product.imageBase64}" alt="">
+					</a>
 					<div class="caption">
 						<h4 class="pull-right">${product.price}</h4>
 						<h4>

@@ -1,6 +1,7 @@
 package com.springtutorial.entity;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.Base64;
 import java.util.Date;
 
@@ -38,7 +39,7 @@ public class Product implements Serializable {
     private String productName;
 	
 	@Column(name = "price", nullable = false)
-    private double price;
+    private BigDecimal price;
 	
 	@Temporal(TemporalType.TIMESTAMP)
     @Column(name = "created_date", nullable = false)
@@ -72,11 +73,11 @@ public class Product implements Serializable {
 		this.productName = productName;
 	}
 
-	public double getPrice() {
+	public BigDecimal getPrice() {
 		return price;
 	}
 
-	public void setPrice(double price) {
+	public void setPrice(BigDecimal price) {
 		this.price = price;
 	}
 

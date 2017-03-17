@@ -44,8 +44,37 @@
 		<put-attribute name="body" value="/WEB-INF/pages/list-product.jsp"/>
 	</definition>
 	
+	<!-- Products detail page -->
+	<definition name="product-detail" extends="layout">
+		<put-attribute name="title" value="Product Detail"/>
+		<put-attribute name="body" value="/WEB-INF/pages/product-detail.jsp"/>
+	</definition>
+	
 	<definition name="register" extends="layout">
 		<put-attribute name="title" value="Register"/>
 		<put-attribute name="body" value="/WEB-INF/pages/register.jsp"/>
 	</definition>
+	
+	<definition name="cart-detail" extends="layout">
+		<put-attribute name="title" value="Cart"/>
+		<put-attribute name="body" value="/WEB-INF/pages/cart-detail.jsp"/>
+	</definition>
+	
+	
+	<!-- Admin page -->
+	<definition name="admin-layout" template="/WEB-INF/pages/admin/base-layout.jsp">
+		<put-attribute name="title" value=""/>
+		<put-attribute name="menu" value="/WEB-INF/pages/admin/menu.jsp"/>
+		<put-attribute name="body" value=""/>
+	</definition>
+	<definition name="admin-home" extends="admin-layout">
+		<put-attribute name="title" value="Home"/>
+		<put-attribute name="body" value="/WEB-INF/pages/admin/home.jsp"/>
+	</definition>
+	
+	<definition name="admin-product-list" extends="admin-layout">
+		<put-attribute name="title" value="Home"/>
+		<put-attribute name="body" value="/WEB-INF/pages/admin/products.jsp"/>
+	</definition>
+	
 </tiles-definitions> 
