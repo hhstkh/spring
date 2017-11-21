@@ -1,8 +1,15 @@
 package com.springtutorial.entity;
 
+import java.util.HashSet;
+import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -10,17 +17,12 @@ import javax.persistence.Table;
 public class Customer {
 	
 	@Id
-	@Column(name = "customer_id")
-	private String customerId;
+	@Column(name = "id")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int customerId;
 	
-	@Column(name = "first_name")
-	private String 	firstName;
-	
-	@Column(name = "middle_name")
-	private String middleName;
-	
-	@Column(name = "last_name")
-	private String lastName;
+	@Column(name = "customer_name")
+	private String 	customerName;
 	
 	@Column(name = "address")
 	private String address;
@@ -30,37 +32,34 @@ public class Customer {
 	private String password;
 	
 	private String email;
+	
+	private String tel;
+	
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "customer")
+	private Set<ShippingAddress> shippingAddresses = new HashSet<>();
 
-	public String getCustomerId() {
+	public int getCustomerId() {
 		return customerId;
 	}
 
-	public void setCustomerId(String customerId) {
+	public void setCustomerId(int customerId) {
 		this.customerId = customerId;
 	}
 
-	public String getFirstName() {
-		return firstName;
+	public String getCustomerName() {
+		return customerName;
 	}
 
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
+	public void setCustomerName(String customerName) {
+		this.customerName = customerName;
 	}
 
-	public String getMiddleName() {
-		return middleName;
+	public Set<ShippingAddress> getShippingAddresses() {
+		return shippingAddresses;
 	}
 
-	public void setMiddleName(String middleName) {
-		this.middleName = middleName;
-	}
-
-	public String getLastName() {
-		return lastName;
-	}
-
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
+	public void setShippingAddresses(Set<ShippingAddress> shippingAddresses) {
+		this.shippingAddresses = shippingAddresses;
 	}
 
 	public String getAddress() {
@@ -95,4 +94,11 @@ public class Customer {
 		this.email = email;
 	}
 
+	public String getTel() {
+		return tel;
+	}
+
+	public void setTel(String tel) {
+		this.tel = tel;
+	}
 }

@@ -1,11 +1,13 @@
 package com.springtutorial.entity;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.ForeignKey;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -22,21 +24,22 @@ public class OrderDetail implements Serializable {
 	
 	@Id
     @Column(name = "id", length = 50, nullable = false)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private String id;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "order_id", nullable = false, foreignKey = @ForeignKey(name = "FK_ORDER_DETAIL_ORDER"))
+	@JoinColumn(name = "order_id")
     private Order order;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "product_id", nullable = false, foreignKey = @ForeignKey(name = "FK_ORDER_DETAIL_PRODUCT"))
+	@JoinColumn(name = "product_id")
     private Product product;
 	
 	@Column(name = "price", nullable = false)
-    private double price;
+    private BigDecimal price;
 	
 	@Column(name = "amount", nullable = false)
-    private double amount;
+    private BigDecimal amount;
 
 	public String getId() {
 		return id;
@@ -62,19 +65,19 @@ public class OrderDetail implements Serializable {
 		this.product = product;
 	}
 
-	public double getPrice() {
+	public BigDecimal getPrice() {
 		return price;
 	}
 
-	public void setPrice(double price) {
+	public void setPrice(BigDecimal price) {
 		this.price = price;
 	}
 
-	public double getAmount() {
+	public BigDecimal getAmount() {
 		return amount;
 	}
 
-	public void setAmount(double amount) {
+	public void setAmount(BigDecimal amount) {
 		this.amount = amount;
 	}
 	

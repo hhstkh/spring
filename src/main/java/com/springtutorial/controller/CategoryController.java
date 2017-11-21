@@ -31,7 +31,7 @@ public class CategoryController {
 			return "errors";
 		}
 		
-		categoryService.save(category);
+		categoryService.saveOrUpdate(category);
 		
 		return "redirect:/category-form";
 	}

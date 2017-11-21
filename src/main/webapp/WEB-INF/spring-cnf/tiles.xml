@@ -60,6 +60,16 @@
 		<put-attribute name="body" value="/WEB-INF/pages/cart-detail.jsp"/>
 	</definition>
 	
+	<definition name="shipping-form" extends="layout">
+		<put-attribute name="title" value="Shipping Form"/>
+		<put-attribute name="body" value="/WEB-INF/pages/shipping-form.jsp"/>
+	</definition>
+	
+	<definition name="shipping-info" extends="layout">
+		<put-attribute name="title" value="Cart"/>
+		<put-attribute name="body" value="/WEB-INF/pages/shipping-info.jsp"/>
+	</definition>
+	
 	
 	<!-- Admin page -->
 	<definition name="admin-layout" template="/WEB-INF/pages/admin/base-layout.jsp">
@@ -75,6 +85,11 @@
 	<definition name="admin-product-list" extends="admin-layout">
 		<put-attribute name="title" value="Home"/>
 		<put-attribute name="body" value="/WEB-INF/pages/admin/products.jsp"/>
+	</definition>
+	
+	<definition name="admin-bike-statictis" extends="admin-layout">
+		<put-attribute name="title" value="Home"/>
+		<put-attribute name="body" value="/WEB-INF/pages/admin/product-statictis.jsp"/>
 	</definition>
 	
 </tiles-definitions> 

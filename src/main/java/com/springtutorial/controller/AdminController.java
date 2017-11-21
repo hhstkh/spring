@@ -29,4 +29,9 @@ public class AdminController {
 		model.addAttribute("products", products);
 		return "admin-product-list";
 	}
+	
+	@RequestMapping("/satictis/bike")
+	public String getBikeStatistic() {
+		return "admin-bike-statictis";
+	}
 }

@@ -5,6 +5,7 @@
 <c:url var="ckeditorPath" value="/resources/3rdParty/ckeditor"/>
 <sp:form method="post" action="${url}"  modelAttribute="product" enctype="multipart/form-data">
 	<sp:input type="hidden" path="productId"/>
+	<sp:input type="hidden" path="productImg"/>
 	<div class="form-group">
 		<label for="p-name">Product Name</label>
 		<sp:input type="text" id="p-name" class="form-control" path="productName"/>
@@ -16,6 +17,9 @@
 	<div class="form-group">
 		<label for="p-img">Product Image</label>
 		<sp:input type="file" path="multipartFiles"/>
+	</div>
+	<div>
+		<img alt="" src="data:image/png;base64, ${product.imageBase64}">
 	</div>
 	<div class="form-group">
 		<label for="p-desc">Description</label>

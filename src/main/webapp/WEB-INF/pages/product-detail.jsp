@@ -1,6 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="sp" uri="http://www.springframework.org/tags/form"%>
-<c:url var="url" value="/checkout/addProduct" />
+<c:url var="url" value="/checkout/addOrUpdateProduct" />
 <div class="col-xs-5">
 	<img src="data:image/png;base64, ${product.imageBase64 }"/>
 </div>

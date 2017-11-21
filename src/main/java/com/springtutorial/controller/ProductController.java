@@ -61,10 +61,12 @@ public class ProductController {
 	}
 	
 	@RequestMapping(value="/product/delete/{productId}")
-	public void deleteProduct(@PathVariable int productId, ModelMap model) {
+	public String deleteProduct(@PathVariable int productId, ModelMap model) {
 		
 		Product p = productService.find(productId);
 		productService.delete(p);
+		
+		return "redirect:/admin/bikes";
 	}
 	
 	@RequestMapping(value = "/product-form", method = RequestMethod.POST)
@@ -74,11 +76,14 @@ public class ProductController {
 		}
 		
 		CommonsMultipartFile[] files = product.getMultipartFiles();
-		for (CommonsMultipartFile commonsMultipartFile : files) {
-			product.setProductImg(commonsMultipartFile.getBytes());
+		for (CommonsMultipartFile partFile : files) {
+			byte[] imgBytes = partFile.getBytes();
+			if (imgBytes != null && imgBytes.length > 0) {
+				product.setProductImg(imgBytes);
+			}
 		}
 		
-		productService.save(product);
+		productService.saveOrUpdate(product);
 		
 		return "redirect:/product-form";
 	}

@@ -35,20 +35,15 @@ public class CartItem {
 		return quantity;
 	}
 	public void setQuantity(int quantity) {
-		this.quantity = this.quantity + quantity;
+		this.quantity = quantity;
 	}
 	public BigDecimal getTotalPrice() {
 		return productPrice.multiply(new BigDecimal(quantity));
 	}
-
-
 	public String getProductImageBase64() {
 		return productImageBase64;
 	}
-
-
 	public void setProductImageBase64(String productImageBase64) {
 		this.productImageBase64 = productImageBase64;
 	}
-	
 }

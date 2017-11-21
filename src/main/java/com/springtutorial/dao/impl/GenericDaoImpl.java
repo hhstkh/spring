@@ -16,7 +16,7 @@ import com.springtutorial.dao.GenericDao;
 
 @Repository
 @Transactional
-public abstract class GenericDaoImpl<E, K extends Serializable> implements GenericDao<E, K>{
+public abstract class GenericDaoImpl<E, K extends Serializable> implements GenericDao<E, K> {
 	
 	@Autowired
 	private SessionFactory sessionFactory;
@@ -39,19 +39,13 @@ public abstract class GenericDaoImpl<E, K extends Serializable> implements Gener
 	}
 
 	@Override
-	public void save(E entity) {
+	public void saveOrUpdate(E entity) {
 		getSession().saveOrUpdate(entity);
 	}
 
 	@Override
-	public void update(E entity) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
 	public void delete(E entity) {
-		// TODO Auto-generated method stub
+		getSession().delete(entity);
 		
 	}
 

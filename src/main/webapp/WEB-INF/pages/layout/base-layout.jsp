@@ -18,6 +18,7 @@
 <!-- Bootstrap Core CSS -->
 <link href="<c:url value='/resources/css/bootstrap.min.css'/>"
 	rel="stylesheet">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 
 <!-- Custom CSS -->
 <link href="<c:url value='/resources/css/shop-homepage.css'/>"
@@ -39,9 +40,7 @@
 
 	<!-- Page Content -->
 	<div class="container">
-		<div class="row">
-			<tiles:insertAttribute name="body" />
-		</div>
+		<tiles:insertAttribute name="body" />
 	</div>
 	<!-- /.container -->
 

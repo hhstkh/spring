@@ -16,8 +16,8 @@
 <title><tiles:getAsString name="title"></tiles:getAsString></title>
 
 <!-- Bootstrap Core CSS -->
-<link href="<c:url value='/resources/css/bootstrap.min.css'/>"
-	rel="stylesheet">
+<link href="<c:url value='/resources/css/bootstrap.min.css'/>" rel="stylesheet">
+<link href="<c:url value='/resources/css/style.css'/>" rel="stylesheet">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 
 </head>
@@ -28,15 +28,14 @@
 	<tiles:insertAttribute name="menu" />
 
 	<!-- Page Content -->
-	<div class="container body-content">
-		<tiles:insertAttribute name="body" />
-	</div>
+	<tiles:insertAttribute name="body" />
 
 	<!-- jQuery -->
 	<script src="<c:url value='/resources/js/jquery.js'/>"></script>
 
 	<!-- Bootstrap Core JavaScript -->
 	<script src="<c:url value='/resources/js/bootstrap.min.js'/>"></script>
+	<script src="<c:url value='/resources/js/shopping.js'/>"></script>
 
 </body>
 

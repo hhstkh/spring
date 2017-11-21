@@ -1,15 +1,17 @@
 package com.springtutorial.bo;
 
 import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+
+import org.apache.commons.collections4.map.HashedMap;
 
 import com.springtutorial.entity.Product;
 
 public class Cart {
 	
 	private String cartId;
-	private List<CartItem> cartItems = new ArrayList<>();
+	private Map<Integer, CartItem> cartItems = new HashedMap<Integer, CartItem>();
 	private BigDecimal grandTotal;
 	
 	public String getCartId() {
@@ -28,36 +30,35 @@ public class Cart {
 	
 	public int getNumberOfItems() {
 		int total = 0;
-		for (CartItem cartItem : this.cartItems) {
-			total += cartItem.getQuantity();
+		for (Entry<Integer, CartItem> entry : cartItems.entrySet()) {
+			total += entry.getValue().getQuantity();
 		}
 		
 		return total;
 	}
 	
-	public List<CartItem> getCartItems() {
+	public Map<Integer, CartItem> getCartItems() {
 		return cartItems;
 	}
-	public void setCartItems(List<CartItem> cartItems) {
+	public void setCartItems(Map<Integer, CartItem> cartItems) {
 		this.cartItems = cartItems;
 	}
 	public void addCartItem(int buyingQty, Product product) {
-		boolean existItem = false;
-		for (CartItem cartItem : cartItems) {
-			if (cartItem.getProductId() == product.getProductId()) {
-				cartItem.setQuantity(buyingQty);
-				existItem = true;
-			}
+		CartItem cartItem = null;
+		if (this.cartItems.containsKey(product.getProductId())) {
+			cartItem = this.cartItems.get(product.getProductId());
+			cartItem.setQuantity(buyingQty);
+		} else {
+			cartItem = new CartItem();
+			cartItem.setProductId(product.getProductId());
+			cartItem.setProductName(product.getProductName());
+			cartItem.setProductPrice(product.getPrice());
+			cartItem.setQuantity(buyingQty);
+			cartItem.setProductImageBase64(product.getImageBase64());
+			
+			this.cartItems.put(product.getProductId(), cartItem);
 		}
 		
-		if (!existItem) {
-			CartItem item = new CartItem();
-			item.setProductId(product.getProductId());
-			item.setProductName(product.getProductName());
-			item.setProductPrice(product.getPrice());
-			item.setProductImageBase64(product.getImageBase64());
-			this.cartItems.add(item);
-		}
 		
 		this.updateGrantTotal();
 	}
@@ -65,8 +66,8 @@ public class Cart {
 	private void updateGrantTotal() {
 		BigDecimal total = BigDecimal.ZERO;
 		
-		for (CartItem cartItem : this.cartItems) {
-			total = total.add(cartItem.getTotalPrice());
+		for (Entry<Integer, CartItem> entry: this.cartItems.entrySet()) {
+			total = total.add(entry.getValue().getTotalPrice());
 		}
 		
 		this.setGrandTotal(total);

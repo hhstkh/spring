@@ -122,7 +122,11 @@ public class Product implements Serializable {
 	}
 
 	public String getImageBase64() {
-		return new String(Base64.getEncoder().encode(this.getProductImg()));
+		byte[] imgBytes = this.getProductImg();
+		if (imgBytes != null && imgBytes.length > 0) {
+			return new String(Base64.getEncoder().encode(this.getProductImg()));
+		}
+		return "";
 	}
 	
 }

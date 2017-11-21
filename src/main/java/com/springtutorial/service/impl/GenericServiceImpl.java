@@ -21,20 +21,14 @@ public abstract class GenericServiceImpl<E, K extends Serializable> implements G
 	}
 
 	@Override
-	public void save(E entity) {
-		genericDao.save(entity);
-		
-	}
-
-	@Override
-	public void update(E entity) {
-		// TODO Auto-generated method stub
+	public void saveOrUpdate(E entity) {
+		genericDao.saveOrUpdate(entity);
 		
 	}
 
 	@Override
 	public void delete(E entity) {
-		// TODO Auto-generated method stub
+		genericDao.delete(entity);
 		
 	}
 
