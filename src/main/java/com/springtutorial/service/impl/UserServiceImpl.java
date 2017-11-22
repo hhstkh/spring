@@ -21,7 +21,7 @@ public class UserServiceImpl extends GenericServiceImpl<User, Integer> implement
 	}
 
 	@Override
-	public User findBySso(String sso) {
-		return this.userDao.findBySso(sso);
+	public User findByUsername(String username) {
+		return this.userDao.findByUsername(username);
 	}
 }

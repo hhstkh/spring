@@ -11,9 +11,9 @@ import com.springtutorial.entity.User;
 public class UserDaoImpl extends GenericDaoImpl<User, Integer> implements UserDao{
 
 	@Override
-	public User findBySso(String sso) {
+	public User findByUsername(String sso) {
 		Criteria criteria = this.creatteEntittyCriteia();
-		criteria.add(Restrictions.eq("ssoId", sso));
+		criteria.add(Restrictions.eq("username", sso));
 		return (User)criteria.uniqueResult();
 	}
 	

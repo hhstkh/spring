@@ -4,6 +4,6 @@ import com.springtutorial.entity.User;
 
 public interface UserDao extends GenericDao<User, Integer>{
 
-	User findBySso(String sso);
+	User findByUsername(String username);
 
 }

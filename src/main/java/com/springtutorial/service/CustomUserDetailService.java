@@ -19,15 +19,15 @@ public class CustomUserDetailService implements UserDetailsService {
 	private UserService userService;
 	
 	@Override
-	public UserDetails loadUserByUsername(String ssoId)
+	public UserDetails loadUserByUsername(String username)
 			throws UsernameNotFoundException {
-		User user = this.userService.findBySso(ssoId);
+		User user = this.userService.findByUsername(username);
 		
 		if (user == null) {
 			throw new UsernameNotFoundException("Username not found");
 		}
 		
-		return new org.springframework.security.core.userdetails.User(user.getSsoId(), user.getPassword(), getGrantedAuthorities(user));
+		return new org.springframework.security.core.userdetails.User(user.getUsername(), user.getPassword(), getGrantedAuthorities(user));
 		
 		
 	}
