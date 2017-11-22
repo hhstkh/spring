@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 5.7.17, for Linux (x86_64)
+-- MySQL dump 10.13  Distrib 5.6.19, for linux-glibc2.5 (x86_64)
 --
 -- Host: localhost    Database: springweb
 -- ------------------------------------------------------
--- Server version	5.5.54-log
+-- Server version	5.5.58-0ubuntu0.14.04.1
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -14,6 +14,29 @@
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `category`
+--
+
+DROP TABLE IF EXISTS `category`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `category` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `category_name` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `category`
+--
+
+LOCK TABLES `category` WRITE;
+/*!40000 ALTER TABLE `category` DISABLE KEYS */;
+/*!40000 ALTER TABLE `category` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `customer`
@@ -113,12 +136,12 @@ CREATE TABLE `order_detail` (
   `amount` int(11) NOT NULL,
   `price` double NOT NULL,
   `order_id` int(11) NOT NULL,
-  `product_id` varchar(45) NOT NULL,
+  `product_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`order_detail_id`),
   KEY `FK_ORDER_DETAIL_ORDER` (`order_id`),
-  KEY `FK_ORDER_DETAIL_PRODUCT` (`product_id`),
+  KEY `fk_order_detail_product_idx` (`product_id`),
   CONSTRAINT `FK_ORDER_DETAIL_ORDER` FOREIGN KEY (`order_id`) REFERENCES `order` (`order_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `FK_ORDER_DETAIL_PRODUCT` FOREIGN KEY (`product_id`) REFERENCES `product` (`product_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  CONSTRAINT `fk_order_detail_product` FOREIGN KEY (`product_id`) REFERENCES `product` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -139,13 +162,16 @@ DROP TABLE IF EXISTS `product`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `product` (
-  `product_id` varchar(20) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `created_date` datetime NOT NULL,
-  `image` longblob,
+  `product_img` longblob,
   `product_name` varchar(255) NOT NULL,
   `price` double NOT NULL,
   `description` varchar(45) DEFAULT NULL,
-  PRIMARY KEY (`product_id`)
+  `category_id` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `fk_product_1_idx` (`category_id`),
+  CONSTRAINT `fk_product_category` FOREIGN KEY (`category_id`) REFERENCES `category` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -155,8 +181,32 @@ CREATE TABLE `product` (
 
 LOCK TABLES `product` WRITE;
 /*!40000 ALTER TABLE `product` DISABLE KEYS */;
-INSERT INTO `product` VALUES ('S001','2017-02-16 00:00:00',NULL,'Core Java',100,NULL),('S002','2017-02-16 00:00:00',NULL,'Spring for Beginners',50,NULL),('S003','2017-02-16 00:00:00',NULL,'Swift for Beginners',120,NULL),('S004','2017-02-16 00:00:00',NULL,'Oracle XML Parser',120,NULL),('S005','2017-02-16 00:00:00',NULL,'CSharp Tutorial for Beginers',110,NULL);
 /*!40000 ALTER TABLE `product` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `user`
+--
+
+DROP TABLE IF EXISTS `user`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `user` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `username` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `password` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `user`
+--
+
+LOCK TABLES `user` WRITE;
+/*!40000 ALTER TABLE `user` DISABLE KEYS */;
+INSERT INTO `user` VALUES (1,'si','123');
+/*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -220,4 +270,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-02-24 15:34:47
+-- Dump completed on 2017-11-22 16:48:13
